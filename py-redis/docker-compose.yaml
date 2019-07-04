@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - pyredis
+    depends_on:
+      - redis
+  redis:
+    image: "redis:alpine"
+    networks:
+      - pyredis
+    command: --appendonly yes
+    volumes:
+      - ./data:/data
+
+networks:
+    pyredis:
