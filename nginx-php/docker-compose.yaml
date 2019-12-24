@@ -11,14 +11,13 @@ services:
     depends_on:
       - php
     networks:
-      - nginxphp
+      - nginx-php
   php:
     image: php:7.2-fpm
     volumes:
       - /home/obohov/Documents/docker-compose/nginx-php/nginx/www:/usr/share/nginx/html
     networks:
-      - nginxphp
+      - nginx-php
 
 networks:
-    nginxphp:
-
+    nginx-php:
